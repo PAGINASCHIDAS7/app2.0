@@ -1,0 +1,40 @@
+ANALISTA PRO ANDROID 1.1.2 — CORRECCION DE INICIO
+
+Esta versión corrige el error reportado:
+NullPointerException en PhoneWindow.getInsetsController()
+desde MainActivity.configureSystemBars() durante onCreate().
+
+1. Descarga y extrae este ZIP.
+2. Crea un repositorio privado vacío:
+   https://github.com/new
+   Nombre sugerido: analista-pro-android-1-1-2
+   No agregar README, .gitignore ni License.
+3. En Code > Add file > Upload files, sube todo el contenido extraído, no el ZIP.
+4. Mantén app/, .github/, build.gradle, settings.gradle y gradle.properties en la raíz.
+5. Si GitHub no sube .github, crea:
+   .github/workflows/build-debug-apk.yml
+   Copia el contenido de COPIAR_WORKFLOW_GITHUB.txt.
+6. Commit changes.
+7. Actions > Build Analista Pro APK > Run workflow.
+8. Espera el check verde y descarga el artifact:
+   Analista-Pro-Android-1.1.2-StartupFix-APK
+9. Extrae app-debug.apk e instala.
+
+Qué se corrigió:
+- Ya no se llama Window.getInsetsController() antes de que exista DecorView.
+- Se conserva Safe Area y edge-to-edge.
+- La acción de mostrar barras se aplaza al DecorView y se protege.
+- El informe antiguo se archiva y no obliga a pulsar borrar y reintentar.
+
+Configuración:
+- minSdk 33 (Android 13)
+- compileSdk / targetSdk 36
+- Java 17 / Gradle 9.6.0
+- versionCode 4 / versionName 1.1.2
+- applicationId com.analistapro.app
+
+Importante:
+La compilación y la prueba física en el HONOR aún deben hacerse. No se afirma que
+se haya ejecutado una prueba de dispositivo desde este entorno.
+Si Android informa firma incompatible, no desinstales la versión anterior antes
+de respaldar datos locales.

@@ -1,0 +1,35 @@
+pluginManagement {
+    repositories {
+        google()
+
+        // Google-hosted Maven Central mirrors. Do not add the original Central endpoint here:
+        // the previous fallback caused Gradle to keep requesting repo.maven.apache.org
+        // and receiving HTTP 429 Too Many Requests.
+        maven {
+            url = uri("https://maven-central-eu.storage-download.googleapis.com/maven2/")
+        }
+        maven {
+            url = uri("https://maven-central.storage-download.googleapis.com/maven2/")
+        }
+
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+
+        // Use the mirrors instead of the default Central host.
+        maven {
+            url = uri("https://maven-central-eu.storage-download.googleapis.com/maven2/")
+        }
+        maven {
+            url = uri("https://maven-central.storage-download.googleapis.com/maven2/")
+        }
+    }
+}
+
+rootProject.name = "AnalistaProAndroid"
+include(":app")
